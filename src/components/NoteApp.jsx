@@ -14,15 +14,32 @@ class NoteApp extends React.Component {
         this.state = {
             notes: getInitialData(),
         }
+
+        this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
     }
 
-    
+    onAddNoteHandler({ title, body }) {
+        this.setState((prevState) => {
+            return {
+                notes: [
+                    ...prevState.notes,
+                    {
+                        id: +new Date(),
+                        title,
+                        body,
+                        createdAt: +new Date(),
+                        archived: false,
+                    }
+                ]
+            }
+        });
+    }
 
     render() {
         return (
             <div className="note-app">
                 <NoteAppHeader />
-                <NoteAppBody notes={this.state.notes} />
+                <NoteAppBody notes={this.state.notes} addNote={this.onAddNoteHandler} />
             </div>
         )
     }
