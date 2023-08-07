@@ -10,7 +10,7 @@ function NoteList({ notes, isArchived, deleteNote, archiveNote, searchKeyword })
     }
 
     return (
-        <div className="note-list">
+        <div className="notes-list">
             {
                 filteredNotes
                     .map((note) => (

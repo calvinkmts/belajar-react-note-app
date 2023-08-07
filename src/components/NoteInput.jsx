@@ -6,9 +6,9 @@ class NoteInput extends React.Component {
         super(props)
 
         this.state = {
-            inputTitleCharacterLimit: 50,
             title: "",
             body: "",
+            inputTitleCharacterLimit: 50,
         }
 
         this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this)
@@ -44,6 +44,13 @@ class NoteInput extends React.Component {
     onSubmitEventHandler(event) {
         event.preventDefault();
         this.props.addNote(this.state);
+        this.setState(() => {
+            return {
+                title: "",
+                body: "",
+                inputTitleCharacterLimit: 50,
+            }
+        })
     }
 
 
