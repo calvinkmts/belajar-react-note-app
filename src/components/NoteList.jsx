@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes, isArchived }) {
+function NoteList({ notes, isArchived, deleteNote, archiveNote }) {
 
     let filteredNotes = notes.filter(note => note.archived === isArchived)
 
@@ -16,6 +16,8 @@ function NoteList({ notes, isArchived }) {
                     .map((note) => (
                         <NoteItem
                             key={note.id}
+                            deleteNote={deleteNote}
+                            archiveNote={archiveNote}
                             {...note} />
                     ))
             }

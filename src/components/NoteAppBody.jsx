@@ -3,14 +3,22 @@ import NoteItem from "./NoteItem";
 import NoteList from "./NoteList";
 import NoteInput from "./NoteInput";
 
-function NoteAppBody({ notes, addNote }) {
+function NoteAppBody({ notes, addNote, deleteNote, archiveNote }) {
     return (
         <div className="note-app__body">
             <NoteInput addNote={addNote} />
             <h2>Catatan Aktif</h2>
-            <NoteList notes={notes} isArchived={false} />
+            <NoteList
+                notes={notes}
+                isArchived={false}
+                deleteNote={deleteNote}
+                archiveNote={archiveNote} />
             <h2>Arsip</h2>
-            <NoteList notes={notes} isArchived />
+            <NoteList
+                notes={notes}
+                isArchived
+                deleteNote={deleteNote}
+                archiveNote={archiveNote} />
         </div>
     );
 }
