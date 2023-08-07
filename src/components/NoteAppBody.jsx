@@ -8,8 +8,9 @@ function NoteAppBody({ notes }) {
         <div className="note-app__body">
             <NoteInput />
             <h2>Catatan Aktif</h2>
-            <NoteList />
+            <NoteList notes={notes} isArchived={false} />
             <h2>Arsip</h2>
+            <NoteList notes={notes} isArchived />
         </div>
     );
 }

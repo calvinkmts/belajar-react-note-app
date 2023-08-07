@@ -1,13 +1,17 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList() {
+function NoteList({ notes, isArchived }) {
     return (
         <div className="note-list">
-            <NoteItem />
-            <NoteItem />
-            <NoteItem />
-            <NoteItem />
+            {
+                notes
+                    .filter(note => note.archived === isArchived)
+                    .map((note) => (
+                        <NoteItem
+                            {...note} />
+                    ))
+            }
         </div>
     )
 }

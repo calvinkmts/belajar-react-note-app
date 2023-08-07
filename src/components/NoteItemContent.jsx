@@ -1,11 +1,11 @@
 import React from "react";
 
-function NoteItemContent() {
+function NoteItemContent({ title, date, body }) {
     return (
         <div className="note-item__content">
-            <h3 className="note-item__title">Test</h3>
-            <p className="note-item__date">Kamis, 14 April 2022</p>
-            <p className="note-item__body">Test 123</p>
+            <h3 className="note-item__title">{title}</h3>
+            <p className="note-item__date">{date}</p>
+            <p className="note-item__body">{body}</p>
         </div>
     );
 }
