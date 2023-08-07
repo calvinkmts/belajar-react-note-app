@@ -3,7 +3,7 @@ import NoteItem from "./NoteItem";
 import NoteList from "./NoteList";
 import NoteInput from "./NoteInput";
 
-function NoteAppBody({ notes, addNote, deleteNote, archiveNote }) {
+function NoteAppBody({ notes, addNote, deleteNote, archiveNote, searchKeyword }) {
     return (
         <div className="note-app__body">
             <NoteInput addNote={addNote} />
@@ -12,13 +12,15 @@ function NoteAppBody({ notes, addNote, deleteNote, archiveNote }) {
                 notes={notes}
                 isArchived={false}
                 deleteNote={deleteNote}
-                archiveNote={archiveNote} />
+                archiveNote={archiveNote} 
+                searchKeyword={searchKeyword} />
             <h2>Arsip</h2>
             <NoteList
                 notes={notes}
                 isArchived
                 deleteNote={deleteNote}
-                archiveNote={archiveNote} />
+                archiveNote={archiveNote}
+                searchKeyword={searchKeyword} />
         </div>
     );
 }

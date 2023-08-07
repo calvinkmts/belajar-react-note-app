@@ -50,7 +50,7 @@ class NoteInput extends React.Component {
     render() {
         return (
             <div className="note-input">
-                <h2>Buat Catatan</h2>
+                <h2>Buat catatan</h2>
                 <form onSubmit={this.onSubmitEventHandler}>
                     <p className="note-input__title__char-limit">Sisa karakter: {this.state.inputTitleCharacterLimit}</p>
                     <input className="note-input__title" placeholder="Judul Note..." value={this.state.title} onChange={this.onTitleChangeEventHandler} />
