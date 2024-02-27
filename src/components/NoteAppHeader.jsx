@@ -1,11 +1,11 @@
 import React from "react";
-import NoteSearch from "./NoteSearch";
+import Navigation from "./Navigation.jsx";
 
-function NoteAppHeader({ searchNote }) {
+function NoteAppHeader() {
     return (
         <div className="note-app__header">
             <h1>Notes</h1>
-            <NoteSearch searchNote={searchNote} />
+            <Navigation />
         </div>
     );
 }

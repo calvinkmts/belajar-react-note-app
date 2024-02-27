@@ -1,28 +1,62 @@
 import React from "react";
-import NoteItem from "./NoteItem";
 import NoteList from "./NoteList";
-import NoteInput from "./NoteInput";
+import NoteSearch from "./NoteSearch.jsx";
+import {archiveNote, deleteNote, getInitialData, getNotes} from "../utils/utils.js";
+import PropTypes from "prop-types";
 
-function NoteAppBody({ notes, addNote, deleteNote, archiveNote, searchKeyword }) {
+function NoteAppBody({ defaultKeyword, searchKeyword}) {
+
+    const [notes, setNotes] = React.useState(getInitialData());
+
+    const filterNotes = (keyword) => {
+        return getNotes().filter(note => note.title.toLowerCase().includes(keyword));
+    }
+
+    const onDeleteNoteHandler = (id) => {
+
+        deleteNote(id);
+
+        setNotes(filterNotes(defaultKeyword));
+    }
+
+    const onArchiveNoteHandler = (id) => {
+
+        archiveNote(id);
+
+        setNotes(filterNotes(defaultKeyword));
+    }
+
+    const onSearchNoteHandler = (keyword) => {
+        const filteredNotes = filterNotes(keyword);
+        setNotes(filteredNotes);
+
+        searchKeyword(keyword);
+    }
+
     return (
         <div className="note-app__body">
-            <NoteInput addNote={addNote} />
+            <NoteSearch defaultKeyword={defaultKeyword} searchNote={onSearchNoteHandler} />
             <h2>Catatan Aktif</h2>
             <NoteList
                 notes={notes}
                 isArchived={false}
-                deleteNote={deleteNote}
-                archiveNote={archiveNote} 
+                deleteNote={onDeleteNoteHandler}
+                archiveNote={onArchiveNoteHandler}
                 searchKeyword={searchKeyword} />
             <h2>Arsip</h2>
             <NoteList
                 notes={notes}
                 isArchived
-                deleteNote={deleteNote}
-                archiveNote={archiveNote}
+                deleteNote={onDeleteNoteHandler}
+                archiveNote={onArchiveNoteHandler}
                 searchKeyword={searchKeyword} />
         </div>
     );
+}
+
+NoteAppBody.propTypes = {
+    defaultKeyword: PropTypes.string.isRequired,
+    searchKeyword: PropTypes.func.isRequired
 }
 
 export default NoteAppBody;
