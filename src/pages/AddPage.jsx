@@ -1,6 +1,6 @@
 import React from "react";
 import NoteInput from "../components/NoteInput.jsx";
-import {addNote, getNotes} from "../utils/utils.js";
+import {addNote} from "../utils/utils.js";
 import {useNavigate} from "react-router-dom";
 
 const AddPage = () => {

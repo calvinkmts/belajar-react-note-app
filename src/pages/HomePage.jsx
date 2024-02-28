@@ -1,7 +1,5 @@
 import React from 'react';
-import NoteAppHeader from "../components/NoteAppHeader.jsx";
 import NoteAppBody from "../components/NoteAppBody.jsx";
-import {getInitialData} from "../utils/utils.js";
 import {useSearchParams} from "react-router-dom";
 
 const HomePage = () => {

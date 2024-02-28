@@ -133,6 +133,14 @@ textarea::placeholder {
     flex: 1;
 }
 
+.note-item__content a {
+    color: white;
+}
+
+.note-item__content a:hover {
+    color: #aaa;
+}
+
 .note-item__title {
     text-overflow: ellipsis;
     overflow: hidden;

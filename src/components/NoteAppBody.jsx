@@ -6,30 +6,25 @@ import PropTypes from "prop-types";
 
 function NoteAppBody({ defaultKeyword, searchKeyword}) {
 
-    const [notes, setNotes] = React.useState(getInitialData());
+    const [notes, setNotes] = React.useState(getInitialData().filter(note => note.title.toLowerCase().includes(defaultKeyword)));
 
     const filterNotes = (keyword) => {
         return getNotes().filter(note => note.title.toLowerCase().includes(keyword));
     }
 
     const onDeleteNoteHandler = (id) => {
-
         deleteNote(id);
-
         setNotes(filterNotes(defaultKeyword));
     }
 
     const onArchiveNoteHandler = (id) => {
-
         archiveNote(id);
-
         setNotes(filterNotes(defaultKeyword));
     }
 
     const onSearchNoteHandler = (keyword) => {
         const filteredNotes = filterNotes(keyword);
         setNotes(filteredNotes);
-
         searchKeyword(keyword);
     }
 
